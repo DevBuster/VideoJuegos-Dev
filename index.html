@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPG'Dev</title>
+    <!-- <script src="./js/index.js" defer></script> -->
 </head>
 
 <body>
@@ -17,21 +18,25 @@
 
         <h2>Seleccione a un jugador</h2>
 
-        
-        <!-- en la etiqueta "radio", el atributo "name "permite crear un grupo conformado por varios "radios" -->
-        <label for="jugador-devbuster">DevBuster</label>
-        <input type="radio" name="jugadores" id="jugador-devbuster">
+        <!-- 
+            en la etiqueta "radio", el atributo "name "permite crear un grupo conformado por varios "radios"
 
-        <label for="jugador-ancestralblock">Ancestral_Block</label>
-        <input type="radio" name="jugadores" id="jugador-ancestralblock">
+            en la etiqueta "label" el atributo "for" permite vincular o apuntar a otra etiqueta donde el "id"
+            de esa etiqueta debe coicindir con el atributo "for" de la etiqueta "label"
+        -->
+        <label for="radio-jugador-devbuster">DevBuster</label>
+        <input type="radio" name="jugadores" id="radio-jugador-devbuster">
 
-        <label for="jugador-aster">Aster</label>
-        <input type="radio" name="jugadores" id="jugador-aster">
+        <label for="radio-jugador-ancestralblock">Ancestral_Block</label>
+        <input type="radio" name="jugadores" id="radio-jugador-ancestralblock">
 
-        <label for="jugador-rex">rex</label>
-        <input type="radio" name="jugadores" id="jugador-rex">
+        <label for="radio-jugador-aster">Aster</label>
+        <input type="radio" name="jugadores" id="radio-jugador-aster">
 
-        <button type="button">Seleccionar jugador</button>
+        <label for="radio-jugador-rex">rex</label>
+        <input type="radio" name="jugadores" id="radio-jugador-rex">
+
+        <button type="button" id="boton-seleccionar-jugador">Seleccionar jugador</button>
 
     </section>
 
@@ -93,6 +98,7 @@
 
     </section>
 
+    <script src="./js/index.js"></script>
 </body>
 
 </html>
