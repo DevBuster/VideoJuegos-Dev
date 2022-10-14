@@ -10,26 +10,31 @@ function cargarJuego() {
 // seleccionamos al jugador
 function seleccionarJugador() {
 
-    let isDevbuster = document.getElementById('radio-jugador-devbuster');
-    let isAncestralblock = document.getElementById('radio-jugador-ancestralblock');
-    let isAster = document.getElementById('radio-jugador-aster');
-    let isRex = document.getElementById('radio-jugador-rex');
+    // variables que obtienen el valor del input radio seleccionado
+    let isDevbuster = document.getElementById('input-radio-jugador-devbuster');
+    let isAncestralblock = document.getElementById('input-radio-jugador-ancestralblock');
+    let isAster = document.getElementById('input-radio-jugador-aster');
+    let isRex = document.getElementById('input-radio-jugador-rex');
+
+    // variables que obtienen el valor del span
+    let spanNombreJugador = document.getElementById('span-nombre-jugador');
 
     if (isDevbuster.checked) {
 
-        alert('Jugador seleccionado: DevBuster');
+        // con innerHTML manipulamos el DOM e insertamos un texto dentro de la etiqueta span
+        spanNombreJugador.innerHTML = 'DevBuster';
 
     } else if (isAncestralblock.checked) {
 
-        alert('Jugador seleccionado: Ancestral_Block');
+        spanNombreJugador.innerHTML = 'Ancestral_block';
 
     } else if (isAster.checked) {
 
-        alert('Jugador seleccionado: Aster');
+        spanNombreJugador.innerHTML = 'Aster';
 
     } else if (isRex.checked) {
 
-        alert('Jugador seleccionado: Rex');
+        spanNombreJugador.innerHTML = 'Rex';
 
     } else {
 
