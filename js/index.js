@@ -7,21 +7,27 @@ function cargarJuego() {
 
 }
 
+// seleccionamos al jugador
 function seleccionarJugador() {
 
-    if (document.getElementById('radio-jugador-devbuster').checked) {
+    let isDevbuster = document.getElementById('radio-jugador-devbuster');
+    let isAncestralblock = document.getElementById('radio-jugador-ancestralblock');
+    let isAster = document.getElementById('radio-jugador-aster');
+    let isRex = document.getElementById('radio-jugador-rex');
+
+    if (isDevbuster.checked) {
 
         alert('Jugador seleccionado: DevBuster');
 
-    } else if (document.getElementById('radio-jugador-ancestralblock').checked) {
+    } else if (isAncestralblock.checked) {
 
         alert('Jugador seleccionado: Ancestral_Block');
 
-    } else if (document.getElementById('radio-jugador-aster').checked) {
+    } else if (isAster.checked) {
 
         alert('Jugador seleccionado: Aster');
 
-    } else if (document.getElementById('radio-jugador-rex').checked) {
+    } else if (isRex.checked) {
 
         alert('Jugador seleccionado: Rex');
 
