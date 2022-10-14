@@ -1,11 +1,17 @@
-// cargamos el script despues de que el html se cargue
-function cargarJuego() {
-
-    // una forma de llamar a la funcion seleccionarJugador
+// codigo refactorizado xD
+window.addEventListener('load', () => {
     let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
     botonSeleccionarJugador.addEventListener('click', seleccionarJugador);
+});
 
-}
+// cargamos el script despues de que el html se cargue
+// function cargarJuego() {
+
+//     // una forma de llamar a la funcion seleccionarJugador
+//     let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
+//     botonSeleccionarJugador.addEventListener('click', seleccionarJugador);
+
+// }
 
 // seleccionamos al jugador
 function seleccionarJugador() {
@@ -50,5 +56,5 @@ function seleccionarJugador() {
         });
 */
 
-window.addEventListener('load', cargarJuego);
+// window.addEventListener('load', cargarJuego);
 // window.addEventListener('DOMContentLoaded', cargarJuego);
