@@ -1,19 +1,6 @@
-// codigo refactorizado xD
-window.addEventListener('load', () => {
-    let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
-    botonSeleccionarJugador.addEventListener('click', seleccionarJugador);
-});
+// -------------------------- funciones para el jugador -------------------------- //
 
-// cargamos el script despues de que el html se cargue
-// function cargarJuego() {
-
-//     // una forma de llamar a la funcion seleccionarJugador
-//     let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
-//     botonSeleccionarJugador.addEventListener('click', seleccionarJugador);
-
-// }
-
-// seleccionamos al jugador
+// seleccionar al jugador
 function seleccionarJugador() {
 
     // variables que obtienen el valor del input radio seleccionado
@@ -23,38 +10,97 @@ function seleccionarJugador() {
     let isRex = document.getElementById('input-radio-jugador-rex');
 
     // variables que obtienen el valor del span
-    let spanNombreJugador = document.getElementById('span-nombre-jugador');
+    let spanJugador = document.getElementById('span-jugador');
 
+    // validar   si los inputs radios estan seleccionados
     if (isDevbuster.checked) {
 
         // con innerHTML manipulamos el DOM e insertamos un texto dentro de la etiqueta span
-        spanNombreJugador.innerHTML = 'DevBuster';
+        spanJugador.innerHTML = 'DevBuster';
 
     } else if (isAncestralblock.checked) {
 
-        spanNombreJugador.innerHTML = 'Ancestral_block';
+        spanJugador.innerHTML = 'Ancestral_block';
 
     } else if (isAster.checked) {
 
-        spanNombreJugador.innerHTML = 'Aster';
+        spanJugador.innerHTML = 'Aster';
 
     } else if (isRex.checked) {
 
-        spanNombreJugador.innerHTML = 'Rex';
+        spanJugador.innerHTML = 'Rex';
 
     } else {
 
         alert('Seleccione un jugador para continunar');
 
     }
+
+    // valida que si no esta vacio el span, que ejecute la funcion
+    if (!(spanJugador.innerHTML == '')) {
+
+        seleccionarJugadorEnemigo();
+        
+    } else {
+
+        alert('Ningun jugador a seleccionado, fin del juego');
+
+    }
 }
 
-/* una forma de asignar funcion mediante flecha
-    let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
-        botonSeleccionarJugador.addEventListener('click', () => {
-            alert('seleccionado');
-        });
-*/
+function seleccionarAtaqueJugador() {
+    //
+}
+// ----------------------------------------------------------------- //
 
-// window.addEventListener('load', cargarJuego);
-// window.addEventListener('DOMContentLoaded', cargarJuego);
+// ------------- funciones para el jugador enemigo ------------- //
+
+// seleccionar jugador del enemigo
+function seleccionarJugadorEnemigo() {
+
+    // varaible que obtiene un numero aleatorio entre el 1 y 4
+    let numeroAleatorio = seleccionarJugadorAleatorio(1, 4);
+
+    let spanJugadorEnemigo = document.getElementById('span-jugador-enemigo');
+
+    // validar si el numero que obtenemos es igual a las condiciones
+    if (numeroAleatorio == 1) {
+
+        spanJugadorEnemigo.innerHTML = 'DevBuster';
+
+    } else if (numeroAleatorio == 2) {
+
+        spanJugadorEnemigo.innerHTML = 'Ancestral_block';
+
+    } else if (numeroAleatorio == 3) {
+
+        spanJugadorEnemigo.innerHTML = 'Aster';
+
+    } else if (numeroAleatorio == 4) {
+
+        spanJugadorEnemigo.innerHTML = 'Rex';
+
+    } else {
+
+        alert('Error inesperado, el numero sobrepasó el rango establecido: ' + numeroAleatorio);
+
+    }
+
+}
+
+// seleccionar jugador de forma aleatoria (enemigo)
+function seleccionarJugadorAleatorio(valorMinimo, valorMaximo) {
+
+    return Math.floor(Math.random() * (valorMaximo - valorMinimo + 1) + valorMinimo);
+
+}
+
+function seleccionarAtaqueEnemigo() {
+    //
+}
+
+// evento de escucha que al momento de que termine de cargar la pagina, carguen los botones
+window.addEventListener('load', () => {
+    let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
+    botonSeleccionarJugador.addEventListener('click', seleccionarJugador);
+});

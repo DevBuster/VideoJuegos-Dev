@@ -7,100 +7,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPG'Dev</title>
 
-    <script src="./js/index.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
     <!-- <script src="./js/index.js" defer></script> -->
 </head>
 
 <body>
 
-    <h1>RPG'Dev</h1>
+    <main>
 
-    <!-- secciones para elegir jugador -->
-    <section id="seleccionar-jugador">
+        <h1>RPG'Dev</h1>
 
-        <h2>Seleccione a un jugador</h2>
+        <!-- feedback general de todos los eventos dentro del juego -->
+        <section id="mensaje-sistema">
 
-        <!-- 
+            <h2><code><span style="color: rgb(255, 0, 255);">SISTEMA</span></code></h2>
+
+            <code><span style="color: green;">ganastes</span> o <span style="color: red;">perdistes</span></code>
+
+        </section>
+
+        <!-- secciones para elegir jugador -->
+        <section id="seleccionar-jugador">
+
+            <h2>Seleccione a un jugador</h2>
+
+            <!-- 
             en la etiqueta "radio", el atributo "name "permite crear un grupo conformado por varios "radios"
 
             en la etiqueta "label" el atributo "for" permite vincular o apuntar a otra etiqueta donde el "id"
             de esa etiqueta debe coicindir con el atributo "for" de la etiqueta "label"
         -->
-        <label for="input-radio-jugador-devbuster">DevBuster</label>
-        <input type="radio" name="jugadores" id="input-radio-jugador-devbuster">
+            <label for="input-radio-jugador-devbuster">DevBuster</label>
+            <input type="radio" name="jugadores" id="input-radio-jugador-devbuster">
 
-        <label for="input-radio-jugador-ancestralblock">Ancestral_Block</label>
-        <input type="radio" name="jugadores" id="input-radio-jugador-ancestralblock">
+            <label for="input-radio-jugador-ancestralblock">Ancestral_block</label>
+            <input type="radio" name="jugadores" id="input-radio-jugador-ancestralblock">
 
-        <label for="input-radio-jugador-aster">Aster</label>
-        <input type="radio" name="jugadores" id="input-radio-jugador-aster">
+            <label for="input-radio-jugador-aster">Aster</label>
+            <input type="radio" name="jugadores" id="input-radio-jugador-aster">
 
-        <label for="input-radio-jugador-rex">Rex</label>
-        <input type="radio" name="jugadores" id="input-radio-jugador-rex">
+            <label for="input-radio-jugador-rex">Rex</label>
+            <input type="radio" name="jugadores" id="input-radio-jugador-rex">
 
-        <button type="button" id="boton-seleccionar-jugador">Seleccionar jugador</button>
-
-    </section>
-
-    <!-- secciones para elegir los ataques del jugador -->
-    <section id="seleccionar-ataque">
-
-        <h2>Seleccione un ataque</h2>
-
-        <!-- ataque cuerpo a cuerpo o con objetos -->
-        <button type="button">fisico</button>
-
-        <!-- ataque mediante conjuros -->
-        <button type="button">magico</button>
-
-        <!-- ataque con apoyo de un NPC -->
-        <button type="button">asistencia</button>
-
-    </section>
-
-    <!-- feedback de todo el combate entre jugadores-->
-    <section id="dashboard">
-
-        <h2>Dashboard</h2>
-
-        <!-- información de combate del jugador -->
-        <section id="estado-jugador">
-
-            <h2>Estado del jugador</h2>
-
-            <p>Nombre del jugador:<span id="span-nombre-jugador"></span></p>
-
-            <p>puntos de vida: <code><span style="color: red;">100HP</span></code></p>
+            <button type="button" id="boton-seleccionar-jugador">Seleccionar jugador</button>
 
         </section>
 
-        <!-- información de combate del enemigo -->
-        <section id="estado-enemigo">
+        <!-- secciones para elegir los ataques del jugador -->
+        <section id="seleccionar-ataque">
 
-            <h2>Estado del enemigo</h2>
+            <h2>Seleccione un ataque</h2>
 
-            <p>puntos de vida: <code><span style="color: red;">100HP</span></code></p>
+            <!-- ataque cuerpo a cuerpo o con objetos -->
+            <button type="button">fisico</button>
+
+            <!-- ataque mediante conjuros -->
+            <button type="button">magico</button>
+
+            <!-- ataque con apoyo de un NPC -->
+            <button type="button">asistencia</button>
 
         </section>
 
-    </section>
+        <!-- feedback de todo el combate entre jugadores-->
+        <section id="dashboard">
 
-    <!-- feedback general de todos los eventos dentro del juego -->
-    <section id="mensaje-sistema">
+            <h2>Dashboard</h2>
 
-        <h2><code><span style="color: rgb(255, 0, 255);">SISTEMA</span></code></h2>
+            <!-- información de combate del jugador -->
+            <section id="estado-jugador">
 
-        <code><span style="color: green;">ganastes</span> o <span style="color: red;">perdistes</span></code>
+                <h3>Estado del jugador</h3>
 
-    </section>
+                <p>Jugador seleccionado: <span id="span-jugador"></span></p>
+                <p>puntos de vida: <code><span style="color: red;">100HP</span></code></p>
 
-    <!-- "manipular el juego" -->
-    <section>
+            </section>
 
-        <h2>THX por jugar</h2>
-        <button type="button">Volver a jugar</button>
+            <!-- información de combate del enemigo -->
+            <section id="estado-enemigo">
 
-    </section>
+                <h3>Estado del enemigo</h3>
+
+                <p>Enemigo seleccionado: <span id="span-jugador-enemigo"></span></p>
+                <p>puntos de vida: <code><span style="color: red;">100HP</span></code></p>
+
+            </section>
+
+        </section>
+
+        <!-- "manipular el juego" -->
+        <section>
+
+            <h2>THX por jugar</h2>
+            <button type="button">Volver a jugar</button>
+
+        </section>
+
+    </main>
 
 </body>
 
