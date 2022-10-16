@@ -12,8 +12,23 @@ let ataqueAsistencia = 10;
 
 // -------------------------- eventos generales del juegos -------------------------- //
 
-// evento de escucha que al momento de que termine de cargar la pagina, carguen los botones
+// evento de escucha que al momento de que termine de cargar la pagina, carguen las siguientes lineas de codigo
 window.addEventListener('load', () => {
+
+    /*
+    * las variables section... son usados para mostrar u ocultar con style.display
+    */
+    let sectionMensajesSistemas = document.getElementById('section-mensajes-sistema');
+    sectionMensajesSistemas.style.display = 'none';
+
+    let sectionSeleccionarAtaque = document.getElementById('section-seleccionar-ataque');
+    sectionSeleccionarAtaque.style.display = 'none';
+
+    let sectionDashboard = document.getElementById('section-dashboard');
+    sectionDashboard.style.display = 'none';
+
+    let sectionControl = document.getElementById('section-control');
+    sectionControl.style.display = 'none';
 
     let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
     botonSeleccionarJugador.addEventListener('click', seleccionarJugador);
@@ -42,19 +57,29 @@ window.addEventListener('load', () => {
 // seleccionar al jugador
 function seleccionarJugador() {
 
-    mensaje = 'Debe seleccionar a un jugador';
+    let sectionSeleccionarJugador = document.getElementById('section-seleccionar-jugador');
+    sectionSeleccionarJugador.style.display = 'none';
 
-    // variables que obtienen el valor del input radio seleccionado
+    mensaje = 'DEBE SELECCIONAR A UN JUGADOR';
+
+    // variables que obtienen el valor booleano del input radio seleccionado
     let isDevbuster = document.getElementById('input-radio-jugador-devbuster');
     let isAncestralblock = document.getElementById('input-radio-jugador-ancestralblock');
     let isAster = document.getElementById('input-radio-jugador-aster');
     let isRex = document.getElementById('input-radio-jugador-rex');
 
+    // variables que apuntan al span del section dashboard
     let spanJugador = document.getElementById('span-jugador');
     let spanPuntosSaludJugador = document.getElementById('puntos-salud-jugador');
     let spanPuntosSaludEnemigo = document.getElementById('puntos-salud-enemigo');
 
+    // boton que apunta a la seleccion del jugador
     let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
+
+    // variable de control para ocultar o mostrar el section
+    let sectionMensajesSistemas = document.getElementById('section-mensajes-sistema');
+    let sectionDashboard = document.getElementById('section-dashboard');
+    let sectionSeleccionarAtaque = document.getElementById('section-seleccionar-ataque');
 
     // validar   si los inputs radios estan seleccionados
     if (isDevbuster.checked) {
@@ -81,17 +106,26 @@ function seleccionarJugador() {
     // valida que si no esta vacio el span, que ejecute la funcion
     if (!(spanJugador.innerHTML == '')) {
 
+        mensaje = 'JUGADOR SELECCIONADO';
+
+        sectionMensajesSistemas.style.display = 'block';
+        sectionDashboard.style.display = 'block';
+        sectionSeleccionarAtaque.style.display = 'block';
+
         spanPuntosSaludJugador.innerHTML = puntosSaludJugador + 'HP';
         spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
         seleccionarJugadorEnemigo();
 
+        crearMensajesSistema(mensaje);
+
         // deshabilita el boton despues de que el jugador seleccion
         botonSeleccionarJugador.disabled = true;
 
     } else {
-
         crearMensajesSistema(mensaje);
+        sectionSeleccionarJugador.style.display = 'block';
+        sectionMensajesSistemas.style.display = 'block';
     }
 }
 
@@ -99,8 +133,6 @@ function seleccionarJugador() {
 
 // seleccionar jugador del enemigo
 function seleccionarJugadorEnemigo() {
-
-    mensaje = 'Error inesperado, el numero sobrepasó el rango establecido';
 
     // varaible que obtiene un numero aleatorio entre el 1 y 4
     let numeroAleatorio = getEnemigoAleatorio(1, 4);
@@ -134,7 +166,7 @@ function seleccionarJugadorEnemigo() {
 
 function atacarFisico() {
 
-    mensaje = 'Debe seleccionar a un jugador';
+    mensaje = 'DEBE SELECCIONAR A UN JUGADOR';
 
     let spanJugador = document.getElementById('span-jugador');
     let spanAtaqueJugador = document.getElementById('ataque-jugador');
@@ -155,7 +187,7 @@ function atacarFisico() {
 
 function atacarMagico() {
 
-    mensaje = 'Debe seleccionar a un jugador';
+    mensaje = 'DEBE SELECCIONAR A UN JUGADOR';
 
     let spanJugador = document.getElementById('span-jugador');
     let spanAtaqueJugador = document.getElementById('ataque-jugador');
@@ -176,7 +208,7 @@ function atacarMagico() {
 
 function atacarAsistencia() {
 
-    mensaje = 'Debe seleccionar a un jugador';
+    mensaje = 'DEBE SELECCIONAR A UN JUGADOR';
 
     let spanJugador = document.getElementById('span-jugador');
     let spanAtaqueJugador = document.getElementById('ataque-jugador');
@@ -197,8 +229,6 @@ function atacarAsistencia() {
 
 // atacar al jugador
 function atacarJugador() {
-
-    mensaje = 'Error inesperado, el numero sobrepasó el rango establecido';
 
     obtenerAtaqueEnemigo = getAtaqueAleatorio(1, 3);
 
@@ -250,7 +280,7 @@ function crearMensajesSistema(mensaje) {
     * appendChild() permite insertar un nodo, en este 
     * caso la etiqueta <p> dentro del sectionMensaje que es un <section> en el html 
     */
-    let sectionMensaje = document.getElementById('mensajes-sistema');
+    let sectionMensaje = document.getElementById('section-mensajes-sistema');
     let mensajesSistema = document.createElement('p');
 
     mensajesSistema.innerHTML = mensaje;
@@ -276,7 +306,7 @@ function combatirJugadores() {
 
             spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
-            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo + 'HP';
+            mensaje = 'GANASTES; PUNTOS DE SALUD DEL ENEMIGO: ' + puntosSaludEnemigo + 'HP';
 
         } else if (ataqueJugador == 'MAGICO' && ataqueEnemigo == 'ASISTENCIA') {
 
@@ -284,7 +314,7 @@ function combatirJugadores() {
 
             spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
-            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo + 'HP';
+            mensaje = 'GANASTES; PUNTOS DE SALUD DEL ENEMIGO: ' + puntosSaludEnemigo + 'HP';
 
         } else if (ataqueJugador == 'ASISTENCIA' && ataqueEnemigo == 'FISICO') {
 
@@ -292,14 +322,14 @@ function combatirJugadores() {
 
             spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
-            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo + 'HP';
+            mensaje = 'GANASTES; PUNTOS DE SALUD DEL ENEMIGO: ' + puntosSaludEnemigo + 'HP';
 
         } else {
 
             puntosSaludJugador -= ataqueFisico;
             spanPuntosSaludJugador.innerHTML = puntosSaludJugador + 'HP';
 
-            mensaje = 'PERDISTE, puntos de salud del jugador: ' + puntosSaludJugador + 'HP';
+            mensaje = 'PERDISTES, PUNTOS DE SALUD DEL JUGADOR: ' + puntosSaludJugador + 'HP';
 
         }
         crearMensajesSistema(mensaje);
@@ -309,19 +339,23 @@ function combatirJugadores() {
 
 function validarPuntosSalud() {
 
+    let sectionControl = document.getElementById('section-control');
+
     if (puntosSaludEnemigo == 0) {
 
-        mensaje = 'GANASTE, Fin del juego';
+        mensaje = 'GANASTES, FIN DEL JUEGO';
 
         crearMensajesSistema(mensaje);
         deshabilitarBotonesAtaque();
+        sectionControl.style.display = 'block';
 
     } else if (puntosSaludJugador == 0) {
 
-        mensaje = 'PERDISTE, Fin del juego';
+        mensaje = 'PERDISTE, FIN DEL JUEGO';
 
         crearMensajesSistema(mensaje);
         deshabilitarBotonesAtaque();
+        sectionControl.style.display = 'block';
     }
 }
 
