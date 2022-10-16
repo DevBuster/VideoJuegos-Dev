@@ -1,4 +1,4 @@
-// -------------------------- variables globales del juegos -------------------------- //
+// -------------------------- variables globales del juego -------------------------- //
 
 let ataqueJugador;
 let ataqueEnemigo;
@@ -45,6 +45,8 @@ function seleccionarJugador() {
     let spanPuntosSaludJugador = document.getElementById('puntos-salud-jugador');
     let spanPuntosSaludEnemigo = document.getElementById('puntos-salud-enemigo');
 
+    let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
+
     // validar   si los inputs radios estan seleccionados
     if (isDevbuster.checked) {
 
@@ -75,10 +77,12 @@ function seleccionarJugador() {
 
         seleccionarJugadorEnemigo();
 
+        // deshabilita el boton despues de que el jugador seleccion
+        botonSeleccionarJugador.disabled = true;
+
     } else {
 
-        crearMensajeSistema(mensaje);
-
+        crearMensajesSistema(mensaje);
     }
 }
 
@@ -113,10 +117,8 @@ function seleccionarJugadorEnemigo() {
 
     } else {
 
-        crearMensajeSistema(mensaje);
-
+        crearMensajesSistema(mensaje);
     }
-
 }
 
 // ------------- funciones de ataques para los jugadores ------------------------------- //
@@ -138,8 +140,7 @@ function atacarFisico() {
 
     } else {
 
-        crearMensajeSistema(mensaje);
-
+        crearMensajesSistema(mensaje);
     }
 }
 
@@ -160,8 +161,7 @@ function atacarMagico() {
 
     } else {
 
-        crearMensajeSistema(mensaje);
-
+        crearMensajesSistema(mensaje);
     }
 }
 
@@ -182,8 +182,7 @@ function atacarAsistencia() {
 
     } else {
 
-        crearMensajeSistema(mensaje);
-
+        crearMensajesSistema(mensaje);
     }
 }
 
@@ -213,12 +212,10 @@ function atacarJugador() {
 
     } else {
 
-        crearMensajeSistema(mensaje);
+        crearMensajesSistema(mensaje);
 
     }
-
-    combate();
-
+    combatirJugadores();
 }
 
 // ------------- funciones generales del juego ----------------------------------- //
@@ -227,18 +224,16 @@ function atacarJugador() {
 function getEnemigoAleatorio(valorMinimo, valorMaximo) {
 
     return Math.floor(Math.random() * (valorMaximo - valorMinimo + 1) + valorMinimo);
-
 }
 
 // obtener el ataque aleatorio del enemigo
 function getAtaqueAleatorio(valorMinimo, valorMaximo) {
 
     return Math.floor(Math.random() * (valorMaximo - valorMinimo + 1) + valorMinimo);
-
 }
 
 // crear mensajes e imprimir todo lo que ocurra dentro del combate
-function crearMensajeSistema(mensaje) {
+function crearMensajesSistema(mensaje) {
 
     /*
     * createElement permite crear una etiqueta html.    
@@ -252,11 +247,10 @@ function crearMensajeSistema(mensaje) {
     mensajesSistema.innerHTML = mensaje;
 
     sectionMensaje.appendChild(mensajesSistema);
-
 }
 
 // combate entre los jugadores
-function combate() {
+function combatirJugadores() {
 
     let spanPuntosSaludJugador = document.getElementById('puntos-salud-jugador');
     let spanPuntosSaludEnemigo = document.getElementById('puntos-salud-enemigo');
@@ -273,7 +267,7 @@ function combate() {
 
             spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
-            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo;
+            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo + 'HP';
 
         } else if (ataqueJugador == 'MAGICO' && ataqueEnemigo == 'ASISTENCIA') {
 
@@ -281,7 +275,7 @@ function combate() {
 
             spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
-            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo;
+            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo + 'HP';
 
         } else if (ataqueJugador == 'ASISTENCIA' && ataqueEnemigo == 'FISICO') {
 
@@ -289,7 +283,7 @@ function combate() {
 
             spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
-            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo;
+            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo + 'HP';
 
         } else {
 
@@ -299,23 +293,37 @@ function combate() {
             mensaje = 'PERDISTE, puntos de salud del jugador: ' + puntosSaludJugador + 'HP';
 
         }
-
-        crearMensajeSistema(mensaje);
-
+        crearMensajesSistema(mensaje);
     }
+    validarPuntosSalud();
+}
+
+function validarPuntosSalud() {
 
     if (puntosSaludEnemigo == 0) {
 
         mensaje = 'GANASTE, Fin del juego';
 
-        crearMensajeSistema(mensaje);
+        crearMensajesSistema(mensaje);
+        deshabilitarBotonesAtaque();
 
     } else if (puntosSaludJugador == 0) {
 
         mensaje = 'PERDISTE, Fin del juego';
 
-        crearMensajeSistema(mensaje);
-
+        crearMensajesSistema(mensaje);
+        deshabilitarBotonesAtaque();
     }
+}
 
+// deshabilita los botones al terminar el juego
+function deshabilitarBotonesAtaque() {
+
+    let botonAtacarFisico = document.getElementById('boton-atacar-fisico');
+    let botonAtacarMagico = document.getElementById('boton-atacar-magico');
+    let botonAtacarAsistencia = document.getElementById('boton-atacar-asistencia');
+
+    botonAtacarFisico.disabled = true;
+    botonAtacarMagico.disabled = true;
+    botonAtacarAsistencia.disabled = true;
 }
