@@ -4,6 +4,12 @@ let ataqueJugador;
 let ataqueEnemigo;
 let mensaje;
 
+let puntosSaludJugador = 100;
+let puntosSaludEnemigo = 100;
+let ataqueFisico = 50;
+let ataqueMagico = 40;
+let ataqueAsistencia = 10;
+
 // -------------------------- eventos generales del juegos -------------------------- //
 
 // evento de escucha que al momento de que termine de cargar la pagina, carguen los botones
@@ -36,8 +42,8 @@ function seleccionarJugador() {
     let isRex = document.getElementById('input-radio-jugador-rex');
 
     let spanJugador = document.getElementById('span-jugador');
-    let spanVidaJugador = document.getElementById('vida-jugador');
-    let spanVidaEnemigo = document.getElementById('vida-enemigo');
+    let spanPuntosSaludJugador = document.getElementById('puntos-salud-jugador');
+    let spanPuntosSaludEnemigo = document.getElementById('puntos-salud-enemigo');
 
     // validar   si los inputs radios estan seleccionados
     if (isDevbuster.checked) {
@@ -64,8 +70,8 @@ function seleccionarJugador() {
     // valida que si no esta vacio el span, que ejecute la funcion
     if (!(spanJugador.innerHTML == '')) {
 
-        spanVidaJugador.innerHTML = '100HP';
-        spanVidaEnemigo.innerHTML = '100HP';
+        spanPuntosSaludJugador.innerHTML = puntosSaludJugador + 'HP';
+        spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
         seleccionarJugadorEnemigo();
 
@@ -249,30 +255,67 @@ function crearMensajeSistema(mensaje) {
 
 }
 
+// combate entre los jugadores
 function combate() {
 
-    if (ataqueJugador == ataqueEnemigo) {
+    let spanPuntosSaludJugador = document.getElementById('puntos-salud-jugador');
+    let spanPuntosSaludEnemigo = document.getElementById('puntos-salud-enemigo');
 
-        mensaje = 'EMPATE';
+    if (puntosSaludJugador > 0 && puntosSaludEnemigo > 0) {
 
-    } else if (ataqueJugador == 'FISICO' && ataqueEnemigo == 'MAGICO') {
+        if (ataqueJugador == ataqueEnemigo) {
 
-        mensaje = 'GANASTE';
+            mensaje = 'EMPATE';
 
-    } else if (ataqueJugador == 'MAGICO' && ataqueEnemigo == 'ASISTENCIA') {
+        } else if (ataqueJugador == 'FISICO' && ataqueEnemigo == 'MAGICO') {
 
-        mensaje = 'GANASTE';
+            puntosSaludEnemigo -= ataqueFisico;
 
-    } else if (ataqueJugador == 'ASISTENCIA' && ataqueEnemigo == 'FISICO') {
+            spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
-        mensaje = 'GANASTE';
+            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo;
 
-    } else {
+        } else if (ataqueJugador == 'MAGICO' && ataqueEnemigo == 'ASISTENCIA') {
 
-        mensaje = 'PERDISTE';
+            puntosSaludEnemigo -= ataqueMagico;
+
+            spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
+
+            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo;
+
+        } else if (ataqueJugador == 'ASISTENCIA' && ataqueEnemigo == 'FISICO') {
+
+            puntosSaludEnemigo -= ataqueAsistencia;
+
+            spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
+
+            mensaje = 'GANASTE, puntos de salud del enemigo: ' + puntosSaludEnemigo;
+
+        } else {
+
+            puntosSaludJugador -= ataqueFisico;
+            spanPuntosSaludJugador.innerHTML = puntosSaludJugador + 'HP';
+
+            mensaje = 'PERDISTE, puntos de salud del jugador: ' + puntosSaludJugador + 'HP';
+
+        }
+
+        crearMensajeSistema(mensaje);
 
     }
 
-    crearMensajeSistema(mensaje);
+    if (puntosSaludEnemigo == 0) {
+
+        mensaje = 'GANASTE, Fin del juego';
+
+        crearMensajeSistema(mensaje);
+
+    } else if (puntosSaludJugador == 0) {
+
+        mensaje = 'PERDISTE, Fin del juego';
+
+        crearMensajeSistema(mensaje);
+
+    }
 
 }
