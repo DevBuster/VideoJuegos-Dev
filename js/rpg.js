@@ -27,6 +27,15 @@ window.addEventListener('load', () => {
     let botonAtacarAsistencia = document.getElementById('boton-atacar-asistencia');
     botonAtacarAsistencia.addEventListener('click', atacarAsistencia);
 
+    let botonReiniciarJuego = document.getElementById('boton-reiniciar-juego');
+    botonReiniciarJuego.addEventListener('click', () => {
+        location.reload();
+    });
+
+    let botonInicio = document.getElementById('boton-inicio');
+    botonInicio.addEventListener('click', () => {
+        history.back();
+    });
 });
 
 // -------------------------- funciones para el jugador -------------------------- //
