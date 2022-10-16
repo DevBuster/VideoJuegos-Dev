@@ -1,7 +1,8 @@
 // -------------------------- variables globales del juegos -------------------------- //
 
-let ataqueJugador; // varaible que obtiene el tipo de ataque del jugador
-let ataqueEnemigo; // varaible que obtiene el tipo de ataque del jugador
+let ataqueJugador;
+let ataqueEnemigo;
+let resultadoCombate;
 
 // -------------------------- eventos generales del juegos -------------------------- //
 
@@ -174,17 +175,21 @@ function atacarAsistencia() {
 function atacarJugador() {
 
     obtenerAtaqueEnemigo = getAtaqueAleatorio(1, 3);
+
     let spanAtaqueEnemigo = document.getElementById('ataque-enemigo');
 
     if (obtenerAtaqueEnemigo == 1) {
+
         ataqueEnemigo = 'FISICO';
         spanAtaqueEnemigo.innerHTML = 'FISICO';
 
     } else if (obtenerAtaqueEnemigo == 2) {
+
         ataqueEnemigo = 'MAGICO';
         spanAtaqueEnemigo.innerHTML = 'MAGICO';
 
     } else if (obtenerAtaqueEnemigo == 3) {
+
         ataqueEnemigo = 'ASISTENCIA';
         spanAtaqueEnemigo.innerHTML = 'ASISTENCIA';
 
@@ -194,7 +199,7 @@ function atacarJugador() {
 
     }
 
-    crearMensajeSistema();
+    combate();
 
 }
 
@@ -215,7 +220,7 @@ function getAtaqueAleatorio(valorMinimo, valorMaximo) {
 }
 
 // crear mensajes e imprimir todo lo que ocurra dentro del combate
-function crearMensajeSistema() {
+function crearMensajeSistema(resultadoCombate) {
 
     /*
     * createElement permite crear una etiqueta html.
@@ -226,8 +231,33 @@ function crearMensajeSistema() {
     let sectionMensaje = document.getElementById('mensajes-sistema');
     let mensajesSistema = document.createElement('p');
 
-    mensajesSistema.innerHTML = 'el jugador atacó con ' + ataqueJugador + ' y el enemigo atacó con ' + ataqueEnemigo;
+    mensajesSistema.innerHTML = 'el jugador atacó con ' + ataqueJugador + ' y el enemigo atacó con ' + ataqueEnemigo + ' resultado: ' + resultadoCombate;
 
     sectionMensaje.appendChild(mensajesSistema);
+
+}
+
+function combate() {
+
+    if (ataqueJugador == ataqueEnemigo) {
+
+        resultadoCombate = 'EMPATE';
+
+    } else if (ataqueJugador == 'FISICO' && ataqueEnemigo == 'MAGICO') {
+
+        resultadoCombate = 'GANASTE';
+
+    } else if (ataqueJugador == 'MAGICO' && ataqueEnemigo == 'ASISTENCIA') {
+
+        resultadoCombate = 'GANASTE';
+
+    } else if (ataqueJugador == 'ASISTENCIA' && ataqueEnemigo == 'FISICO') {
+
+        resultadoCombate = 'GANASTE';
+    } else {
+        resultadoCombate = 'PERDISTE';
+    }
+
+    crearMensajeSistema(resultadoCombate);
 
 }
