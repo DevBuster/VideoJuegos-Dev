@@ -118,8 +118,9 @@ function atacarFisico() {
     // valida que si no esta vacio el span, que ejecute la funcion
     if (!(spanJugador.innerHTML == '')) {
 
+        ataqueJugador = 'FISICO';
         spanAtaqueJugador.innerHTML = 'FISICO';
-        
+
         atacarJugador();
 
     } else {
@@ -137,6 +138,7 @@ function atacarMagico() {
     // valida que si no esta vacio el span, que ejecute la funcion
     if (!(spanJugador.innerHTML == '')) {
 
+        ataqueJugador = 'MAGICO';
         spanAtaqueJugador.innerHTML = 'MAGICO';
 
         atacarJugador();
@@ -156,6 +158,7 @@ function atacarAsistencia() {
     // valida que si no esta vacio el span, que ejecute la funcion
     if (!(spanJugador.innerHTML == '')) {
 
+        ataqueJugador = 'ASISTENCIA';
         spanAtaqueJugador.innerHTML = 'ASISTENCIA';
 
         atacarJugador();
@@ -170,22 +173,29 @@ function atacarAsistencia() {
 // atacar al jugador
 function atacarJugador() {
 
-    ataqueEnemigo = getAtaqueAleatorio(1, 3);
+    obtenerAtaqueEnemigo = getAtaqueAleatorio(1, 3);
     let spanAtaqueEnemigo = document.getElementById('ataque-enemigo');
 
-    if (ataqueEnemigo == 1) {
-
+    if (obtenerAtaqueEnemigo == 1) {
+        ataqueEnemigo = 'FISICO';
         spanAtaqueEnemigo.innerHTML = 'FISICO';
 
-    } else if (ataqueEnemigo == 2) {
-
+    } else if (obtenerAtaqueEnemigo == 2) {
+        ataqueEnemigo = 'MAGICO';
         spanAtaqueEnemigo.innerHTML = 'MAGICO';
 
-    } else if (ataqueEnemigo == 3) {
-
+    } else if (obtenerAtaqueEnemigo == 3) {
+        ataqueEnemigo = 'ASISTENCIA';
         spanAtaqueEnemigo.innerHTML = 'ASISTENCIA';
 
+    } else {
+
+        alert('Error inesperado, el numero sobrepasó el rango establecido: ' + numeroAleatorio);
+
     }
+
+    crearMensajeSistema();
+
 }
 
 // ------------- funciones generales del juego ----------------------------------- //
@@ -201,5 +211,23 @@ function getEnemigoAleatorio(valorMinimo, valorMaximo) {
 function getAtaqueAleatorio(valorMinimo, valorMaximo) {
 
     return Math.floor(Math.random() * (valorMaximo - valorMinimo + 1) + valorMinimo);
+
+}
+
+// crear mensajes e imprimir todo lo que ocurra dentro del combate
+function crearMensajeSistema() {
+
+    /*
+    * createElement permite crear una etiqueta html.
+    *
+    * appendChild() permite insertar un nodo, en este 
+    * caso la etiqueta <p> dentro del sectionMensaje que es un <section> en el html 
+    */
+    let sectionMensaje = document.getElementById('mensajes-sistema');
+    let mensajesSistema = document.createElement('p');
+
+    mensajesSistema.innerHTML = 'el jugador atacó con ' + ataqueJugador + ' y el enemigo atacó con ' + ataqueEnemigo;
+
+    sectionMensaje.appendChild(mensajesSistema);
 
 }
