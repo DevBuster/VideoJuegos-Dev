@@ -18,13 +18,13 @@
         <h1>RPG'Dev</h1>
 
         <!-- feedback general de todos los eventos dentro del juego -->
-        <section id="mensaje-sistema">
+        <!-- <section id="mensaje-sistema">
 
             <h2><code><span style="color: rgb(255, 0, 255);">SISTEMA</span></code></h2>
 
-            <code><span style="color: green;">ganastes</span> o <span style="color: red;">perdistes</span></code>
+            <code><span style="color: rgb(0, 255, 0);">ganastes</span> o <span style="color: red;">perdistes</span></code>
 
-        </section>
+        </section> -->
 
         <!-- secciones para elegir jugador -->
         <section id="seleccionar-jugador">
@@ -59,13 +59,13 @@
             <h2>Seleccione un ataque</h2>
 
             <!-- ataque cuerpo a cuerpo o con objetos -->
-            <button type="button">fisico</button>
+            <button id="boton-atacar-fisico">fisico</button>
 
             <!-- ataque mediante conjuros -->
-            <button type="button">magico</button>
+            <button id="boton-atacar-magico">magico</button>
 
             <!-- ataque con apoyo de un NPC -->
-            <button type="button">asistencia</button>
+            <button id="boton-atacar-asistencia">asistencia</button>
 
         </section>
 
@@ -79,8 +79,9 @@
 
                 <h3>Estado del jugador</h3>
 
-                <p>Jugador seleccionado: <span id="span-jugador"></span></p>
-                <p>puntos de vida: <code><span style="color: red;">100HP</span></code></p>
+                <p>Nombre del jugador: <code><span id="span-jugador" style="color: rgb(0, 26, 255);"></span></code></p>
+                <p>Ataque del jugador: <code><span id="ataque-jugador" style="color: rgb(255, 0, 255);"></span></code></p>
+                <p>Puntos de salud: <code><span id="vida-jugador" style="color: red;"></span></code></p>
 
             </section>
 
@@ -89,8 +90,10 @@
 
                 <h3>Estado del enemigo</h3>
 
-                <p>Enemigo seleccionado: <span id="span-jugador-enemigo"></span></p>
-                <p>puntos de vida: <code><span style="color: red;">100HP</span></code></p>
+                <p>Nombre del enemigo: <code><span id="span-enemigo" style="color: rgb(0, 26, 255);"></span></code></p>
+                <p>Ataque del enemigo: <code><span id="ataque-enemigo" style="color: rgb(255, 0, 255);"></span></code>
+                </p>
+                <p>Puntos de salud: <code><span id="vida-enemigo" style="color: red;"></span></code></p>
 
             </section>
 

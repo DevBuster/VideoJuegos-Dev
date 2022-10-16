@@ -1,5 +1,28 @@
-// -------------------------- funciones para el jugador -------------------------- //
+// -------------------------- variables globales del juegos -------------------------- //
 
+let ataqueJugador; // varaible que obtiene el tipo de ataque del jugador
+let ataqueEnemigo; // varaible que obtiene el tipo de ataque del jugador
+
+// -------------------------- eventos generales del juegos -------------------------- //
+
+// evento de escucha que al momento de que termine de cargar la pagina, carguen los botones
+window.addEventListener('load', () => {
+
+    let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
+    botonSeleccionarJugador.addEventListener('click', seleccionarJugador);
+
+    let botonAtacarFisico = document.getElementById('boton-atacar-fisico');
+    botonAtacarFisico.addEventListener('click', atacarFisico);
+
+    let botonAtacarMagico = document.getElementById('boton-atacar-magico');
+    botonAtacarMagico.addEventListener('click', atacarMagico);
+
+    let botonAtacarAsistencia = document.getElementById('boton-atacar-asistencia');
+    botonAtacarAsistencia.addEventListener('click', atacarAsistencia);
+
+});
+
+// -------------------------- funciones para el jugador -------------------------- //
 // seleccionar al jugador
 function seleccionarJugador() {
 
@@ -9,8 +32,9 @@ function seleccionarJugador() {
     let isAster = document.getElementById('input-radio-jugador-aster');
     let isRex = document.getElementById('input-radio-jugador-rex');
 
-    // variables que obtienen el valor del span
     let spanJugador = document.getElementById('span-jugador');
+    let spanVidaJugador = document.getElementById('vida-jugador');
+    let spanVidaEnemigo = document.getElementById('vida-enemigo');
 
     // validar   si los inputs radios estan seleccionados
     if (isDevbuster.checked) {
@@ -31,16 +55,17 @@ function seleccionarJugador() {
         spanJugador.innerHTML = 'Rex';
 
     } else {
-
-        alert('Seleccione un jugador para continunar');
-
+        //
     }
 
     // valida que si no esta vacio el span, que ejecute la funcion
     if (!(spanJugador.innerHTML == '')) {
 
+        spanVidaJugador.innerHTML = '100HP';
+        spanVidaEnemigo.innerHTML = '100HP';
+
         seleccionarJugadorEnemigo();
-        
+
     } else {
 
         alert('Ningun jugador a seleccionado, fin del juego');
@@ -48,20 +73,15 @@ function seleccionarJugador() {
     }
 }
 
-function seleccionarAtaqueJugador() {
-    //
-}
-// ----------------------------------------------------------------- //
-
-// ------------- funciones para el jugador enemigo ------------- //
+// ------------- funciones para el jugador enemigo ------------------------------- //
 
 // seleccionar jugador del enemigo
 function seleccionarJugadorEnemigo() {
 
     // varaible que obtiene un numero aleatorio entre el 1 y 4
-    let numeroAleatorio = seleccionarJugadorAleatorio(1, 4);
+    let numeroAleatorio = getEnemigoAleatorio(1, 4);
 
-    let spanJugadorEnemigo = document.getElementById('span-jugador-enemigo');
+    let spanJugadorEnemigo = document.getElementById('span-enemigo');
 
     // validar si el numero que obtenemos es igual a las condiciones
     if (numeroAleatorio == 1) {
@@ -88,19 +108,98 @@ function seleccionarJugadorEnemigo() {
 
 }
 
-// seleccionar jugador de forma aleatoria (enemigo)
-function seleccionarJugadorAleatorio(valorMinimo, valorMaximo) {
+// ------------- funciones de ataques para los jugadores ------------------------------- //
+
+function atacarFisico() {
+
+    let spanJugador = document.getElementById('span-jugador');
+    let spanAtaqueJugador = document.getElementById('ataque-jugador');
+
+    // valida que si no esta vacio el span, que ejecute la funcion
+    if (!(spanJugador.innerHTML == '')) {
+
+        spanAtaqueJugador.innerHTML = 'FISICO';
+        
+        atacarJugador();
+
+    } else {
+
+        alert('Ningun jugador a seleccionado, fin del juego');
+
+    }
+}
+
+function atacarMagico() {
+
+    let spanJugador = document.getElementById('span-jugador');
+    let spanAtaqueJugador = document.getElementById('ataque-jugador');
+
+    // valida que si no esta vacio el span, que ejecute la funcion
+    if (!(spanJugador.innerHTML == '')) {
+
+        spanAtaqueJugador.innerHTML = 'MAGICO';
+
+        atacarJugador();
+
+    } else {
+
+        alert('Ningun jugador a seleccionado, fin del juego');
+
+    }
+}
+
+function atacarAsistencia() {
+
+    let spanJugador = document.getElementById('span-jugador');
+    let spanAtaqueJugador = document.getElementById('ataque-jugador');
+
+    // valida que si no esta vacio el span, que ejecute la funcion
+    if (!(spanJugador.innerHTML == '')) {
+
+        spanAtaqueJugador.innerHTML = 'ASISTENCIA';
+
+        atacarJugador();
+
+    } else {
+
+        alert('Ningun jugador a seleccionado, fin del juego');
+
+    }
+}
+
+// atacar al jugador
+function atacarJugador() {
+
+    ataqueEnemigo = getAtaqueAleatorio(1, 3);
+    let spanAtaqueEnemigo = document.getElementById('ataque-enemigo');
+
+    if (ataqueEnemigo == 1) {
+
+        spanAtaqueEnemigo.innerHTML = 'FISICO';
+
+    } else if (ataqueEnemigo == 2) {
+
+        spanAtaqueEnemigo.innerHTML = 'MAGICO';
+
+    } else if (ataqueEnemigo == 3) {
+
+        spanAtaqueEnemigo.innerHTML = 'ASISTENCIA';
+
+    }
+}
+
+// ------------- funciones generales del juego ----------------------------------- //
+
+// obtener el enemigo aleatorio
+function getEnemigoAleatorio(valorMinimo, valorMaximo) {
 
     return Math.floor(Math.random() * (valorMaximo - valorMinimo + 1) + valorMinimo);
 
 }
 
-function seleccionarAtaqueEnemigo() {
-    //
-}
+// obtener el ataque aleatorio del enemigo
+function getAtaqueAleatorio(valorMinimo, valorMaximo) {
 
-// evento de escucha que al momento de que termine de cargar la pagina, carguen los botones
-window.addEventListener('load', () => {
-    let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
-    botonSeleccionarJugador.addEventListener('click', seleccionarJugador);
-});
+    return Math.floor(Math.random() * (valorMaximo - valorMinimo + 1) + valorMinimo);
+
+}
