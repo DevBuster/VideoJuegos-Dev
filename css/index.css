@@ -1,6 +1,5 @@
-.h1-titulo {
-    text-align: center;
-    color: white;
-    background-color: blue;
-    border-radius: 50px;
+#section-seleccionar-jugador {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
