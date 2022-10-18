@@ -2,4 +2,28 @@
     display: flex;
     flex-flow: column;
     align-items: center;
+    text-align: center;
+}
+
+.tarjeta-jugador {
+    width: 130px;
+    height: 100px;
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+    background-color: aqua;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.boton-seleccionar-jugador{
+    background-color: aquamarine;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+input {
+    display: none;
 }
