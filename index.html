@@ -2,82 +2,105 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RPG'Dev</title>
 
     <script src="./js/index.js"></script>
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/index.css" />
     <!-- <script src="./js/index.js" defer></script> -->
 </head>
 
 <body>
 
     <main>
-
+        
         <!-- secciones para elegir jugador -->
         <section id="section-seleccionar-jugador">
+            
             <h1>RPG'Dev</h1>
 
             <h2>Seleccione a un jugador</h2>
 
-            <!-- 
+            <div class="tarjetas-jugadores">
+                <!-- 
             en la etiqueta "radio", el atributo "name "permite crear un grupo conformado por varios "radios"
 
             en la etiqueta "label" el atributo "for" permite vincular o apuntar a otra etiqueta donde el "id"
             de esa etiqueta debe coicindir con el atributo "for" de la etiqueta "label"
         -->
-            <label class="tarjeta-jugador" for="input-radio-jugador-devbuster">DevBuster</label>
-            <input type="radio" name="jugadores" id="input-radio-jugador-devbuster">
+                <label class="tarjeta-jugador" for="input-radio-jugador-devbuster">
+                    <p>DevBuster</p>
+                    <img src="./assets/devbuster.jpg" alt="DevBuster">
+                </label>
+                <input type="radio" name="jugadores" id="input-radio-jugador-devbuster" />
 
-            <label class="tarjeta-jugador" for="input-radio-jugador-ancestralblock">Ancestral_block</label>
-            <input type="radio" name="jugadores" id="input-radio-jugador-ancestralblock">
+                <label class="tarjeta-jugador" for="input-radio-jugador-ancestralblock">
+                    <p>Ancestral_block</p>
+                    <img src="./assets/ancestral_block.jpg" alt="Ancestral_Block">
+                </label>
+                <input type="radio" name="jugadores" id="input-radio-jugador-ancestralblock" />
 
-            <label class="tarjeta-jugador" for="input-radio-jugador-aster">Aster</label>
-            <input type="radio" name="jugadores" id="input-radio-jugador-aster">
+                <label class="tarjeta-jugador" for="input-radio-jugador-aster">
+                    <p>Aster</p>
+                    <img src="./assets/aster.jpg" alt="Aster">
+                </label>
+                <input type="radio" name="jugadores" id="input-radio-jugador-aster" />
 
-            <label class="tarjeta-jugador" for="input-radio-jugador-rex">Rex</label>
-            <input type="radio" name="jugadores" id="input-radio-jugador-rex">
+                <label class="tarjeta-jugador" for="input-radio-jugador-rex">
+                    <p>Rex</p>
+                    <img src="./assets/rex.jpg" alt="Rex">
+                </label>
+                <input type="radio" name="jugadores" id="input-radio-jugador-rex" />
 
-            <button class="boton-seleccionar-jugador" type="button" id="boton-seleccionar-jugador">Seleccionar jugador</button>
+            </div>
+
+            <button class="boton-seleccionar-jugador" type="button" id="boton-seleccionar-jugador">
+                Seleccionar jugador
+            </button>
 
         </section>
 
         <!-- feedback de todo el combate entre jugadores-->
         <section id="section-dashboard">
-
             <h2>Dashboard</h2>
 
             <!-- información de combate del jugador -->
             <section id="estado-jugador">
-
                 <h3>Estado del jugador</h3>
 
-                <p>Nombre del jugador: <code><span id="span-jugador"></span></code></p>
-                <p>Ataque del jugador: <code><span id="ataque-jugador"></span></code>
+                <p>
+                    Nombre del jugador: <code><span id="span-jugador"></span></code>
                 </p>
-                <p>Puntos de salud del jugador: <code><span id="puntos-salud-jugador"></span></code>
+                <p>
+                    Ataque del jugador: <code><span id="ataque-jugador"></span></code>
                 </p>
-
+                <p>
+                    Puntos de salud del jugador:
+                    <code><span id="puntos-salud-jugador"></span></code>
+                </p>
             </section>
 
             <!-- información de combate del enemigo -->
             <section id="estado-enemigo">
-
                 <h3>Estado del enemigo</h3>
 
-                <p>Nombre del enemigo: <code><span id="span-enemigo"></span></code></p>
-                <p>Ataque del enemigo: <code><span id="ataque-enemigo"></span></code></p>
-                <p>Puntos de salud del enemigo: <code><span id="puntos-salud-enemigo"></span></code></p>
-
+                <p>
+                    Nombre del enemigo: <code><span id="span-enemigo"></span></code>
+                </p>
+                <p>
+                    Ataque del enemigo: <code><span id="ataque-enemigo"></span></code>
+                </p>
+                <p>
+                    Puntos de salud del enemigo:
+                    <code><span id="puntos-salud-enemigo"></span></code>
+                </p>
             </section>
-
         </section>
 
         <!-- secciones para elegir los ataques del jugador -->
         <section id="section-seleccionar-ataque">
-
             <h2>Seleccione un ataque</h2>
 
             <!-- ataque cuerpo a cuerpo o con objetos -->
@@ -88,27 +111,22 @@
 
             <!-- ataque con apoyo de un NPC -->
             <button id="boton-atacar-asistencia">asistencia</button>
-
         </section>
 
-         <!-- feedback general de todos los eventos dentro del juego -->
-         <section id="section-mensajes-sistema">
-
-            <h2><code><span>MENSAJES DEL SISTEMA</span></code></h2>
-
+        <!-- feedback general de todos los eventos dentro del juego -->
+        <section id="section-mensajes-sistema">
+            <h2>
+                <code><span>MENSAJES DEL SISTEMA</span></code>
+            </h2>
         </section>
-        
+
         <!-- control de juego -->
         <section id="section-control">
-
             <h2>THX por jugar</h2>
             <button id="boton-reiniciar-juego">Volver a jugar</button>
             <button id="boton-inicio">Cancelar</button>
-
         </section>
-
     </main>
-
 </body>
 
 </html>

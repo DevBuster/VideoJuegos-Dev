@@ -1,23 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+body, button {
+    font-family: 'Silkscreen', cursive;
+    background-color: #98A8F8;
+}
+
 #section-seleccionar-jugador {
     display: flex;
+
+    /* tiene en cuenta tanto el eje principal como el eje transversal */
     flex-flow: column;
+
     align-items: center;
     text-align: center;
 }
 
+.tarjetas-jugadores {
+    display: flex;
+    gap: 10px
+        /* agrega espaciados entre las tarjetas */
+    ;
+}
+
 .tarjeta-jugador {
-    width: 130px;
+    width: 280px;
     height: 100px;
     padding: 10px;
     margin: 5px;
+
+    /*distribuye de manera equivalente los pixels para que cumpla los pixels tanto de anchura como altura*/
     box-sizing: border-box;
-    background-color: aqua;
+
+    background-color: #BCCEF8;
     text-align: center;
     border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.boton-seleccionar-jugador{
-    background-color: aquamarine;
+.tarjeta-jugador img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    align-items: flex-start
+}
+
+.boton-seleccionar-jugador {
+    display: flex;
+    background-color: #CDFCF6;
     padding: 5px;
     margin: 10px;
     border: 1px solid black;
