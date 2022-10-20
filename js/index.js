@@ -72,6 +72,8 @@ function seleccionarJugador() {
     let spanJugador = document.getElementById('span-jugador');
     let spanPuntosSaludJugador = document.getElementById('puntos-salud-jugador');
     let spanPuntosSaludEnemigo = document.getElementById('puntos-salud-enemigo');
+    let spanAtaqueJugador = document.getElementById('ataque-jugador');
+    let spanAtaqueEnemigo = document.getElementById('ataque-enemigo');
 
     // boton que apunta a la seleccion del jugador
     let botonSeleccionarJugador = document.getElementById('boton-seleccionar-jugador');
@@ -108,12 +110,14 @@ function seleccionarJugador() {
 
         mensaje = 'JUGADOR SELECCIONADO';
 
-        sectionMensajesSistemas.style.display = 'block';
-        sectionDashboard.style.display = 'block';
-        sectionSeleccionarAtaque.style.display = 'block';
+        sectionMensajesSistemas.style.display = 'flex';
+        sectionDashboard.style.display = 'flex';
+        sectionSeleccionarAtaque.style.display = 'flex';
 
         spanPuntosSaludJugador.innerHTML = puntosSaludJugador + 'HP';
         spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
+        spanAtaqueJugador.innerHTML = '?';
+        spanAtaqueEnemigo.innerHTML = '?';
 
         seleccionarJugadorEnemigo();
 
@@ -124,8 +128,8 @@ function seleccionarJugador() {
 
     } else {
         crearMensajesSistema(mensaje);
-        sectionSeleccionarJugador.style.display = 'block';
-        sectionMensajesSistemas.style.display = 'block';
+        sectionSeleccionarJugador.style.display = 'flex';
+        sectionMensajesSistemas.style.display = 'flex';
     }
 }
 
@@ -306,7 +310,7 @@ function combatirJugadores() {
 
             spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
-            mensaje = 'GANASTES; PUNTOS DE SALUD DEL ENEMIGO: ' + puntosSaludEnemigo + 'HP';
+            mensaje = 'GANASTES';
 
         } else if (ataqueJugador == 'MAGICO' && ataqueEnemigo == 'ASISTENCIA') {
 
@@ -314,7 +318,7 @@ function combatirJugadores() {
 
             spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
-            mensaje = 'GANASTES; PUNTOS DE SALUD DEL ENEMIGO: ' + puntosSaludEnemigo + 'HP';
+            mensaje = 'GANASTES';
 
         } else if (ataqueJugador == 'ASISTENCIA' && ataqueEnemigo == 'FISICO') {
 
@@ -322,14 +326,14 @@ function combatirJugadores() {
 
             spanPuntosSaludEnemigo.innerHTML = puntosSaludEnemigo + 'HP';
 
-            mensaje = 'GANASTES; PUNTOS DE SALUD DEL ENEMIGO: ' + puntosSaludEnemigo + 'HP';
+            mensaje = 'GANASTES';
 
         } else {
 
             puntosSaludJugador -= ataqueFisico;
             spanPuntosSaludJugador.innerHTML = puntosSaludJugador + 'HP';
 
-            mensaje = 'PERDISTES, PUNTOS DE SALUD DEL JUGADOR: ' + puntosSaludJugador + 'HP';
+            mensaje = 'PERDISTES';
 
         }
         crearMensajesSistema(mensaje);
@@ -347,7 +351,7 @@ function validarPuntosSalud() {
 
         crearMensajesSistema(mensaje);
         deshabilitarBotonesAtaque();
-        sectionControl.style.display = 'block';
+        sectionControl.style.display = 'flex';
 
     } else if (puntosSaludJugador == 0) {
 
@@ -355,7 +359,7 @@ function validarPuntosSalud() {
 
         crearMensajesSistema(mensaje);
         deshabilitarBotonesAtaque();
-        sectionControl.style.display = 'block';
+        sectionControl.style.display = 'flex';
     }
 }
 

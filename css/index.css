@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 
-body, button, span {
+body,
+button,
+span {
     font-family: 'Silkscreen', cursive;
     background-color: #98A8F8;
 }
 
-button{
+button {
     font-family: 'Silkscreen', cursive;
     border-radius: 10px;
 }
@@ -20,14 +22,14 @@ button{
     text-align: center;
 }
 
-.tarjetas-jugadores {
+/* .tarjetas-jugadores {
     display: flex;
-    gap: 10px
-        /* agrega espaciados entre las tarjetas */
-    ;
-}
 
-#boton-seleccionar-jugador{
+    /* agrega espaciados entre las tarjetas 
+    gap: 10px;
+} */
+
+#boton-seleccionar-jugador {
     border-radius: 10px;
 }
 
@@ -67,4 +69,32 @@ button{
 
 input {
     display: none;
+}
+
+#section-dashboard {
+    /* en index.js esta establecido style.display = flex */
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor-flex-center{
+    display: flex;
+    gap: 15px;
+    text-align: center;
+}
+
+#section-seleccionar-ataque {
+    /* en index.js esta establecido style.display = flex */
+    flex-direction: column;
+    align-items: center;
+}
+
+#section-mensajes-sistema {
+    flex-direction: column;
+    align-items: center;
+}
+
+#section-control {
+    flex-direction: column;
+    align-items: center;
 }
