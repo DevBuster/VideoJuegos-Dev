@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 
-body, button {
+body, button, span {
     font-family: 'Silkscreen', cursive;
     background-color: #98A8F8;
+}
+
+button{
+    font-family: 'Silkscreen', cursive;
+    border-radius: 10px;
 }
 
 #section-seleccionar-jugador {
@@ -20,6 +25,10 @@ body, button {
     gap: 10px
         /* agrega espaciados entre las tarjetas */
     ;
+}
+
+#boton-seleccionar-jugador{
+    border-radius: 10px;
 }
 
 .tarjeta-jugador {

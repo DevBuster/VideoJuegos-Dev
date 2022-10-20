@@ -15,10 +15,10 @@
 <body>
 
     <main>
-        
+
         <!-- secciones para elegir jugador -->
         <section id="section-seleccionar-jugador">
-            
+
             <h1>RPG'Dev</h1>
 
             <h2>Seleccione a un jugador</h2>
@@ -31,8 +31,11 @@
             de esa etiqueta debe coicindir con el atributo "for" de la etiqueta "label"
         -->
                 <label class="tarjeta-jugador" for="input-radio-jugador-devbuster">
+
                     <p>DevBuster</p>
+
                     <img src="./assets/devbuster.jpg" alt="DevBuster">
+
                 </label>
                 <input type="radio" name="jugadores" id="input-radio-jugador-devbuster" />
 
@@ -89,44 +92,61 @@
                 <p>
                     Nombre del enemigo: <code><span id="span-enemigo"></span></code>
                 </p>
+
                 <p>
                     Ataque del enemigo: <code><span id="ataque-enemigo"></span></code>
                 </p>
+
                 <p>
                     Puntos de salud del enemigo:
                     <code><span id="puntos-salud-enemigo"></span></code>
                 </p>
+
             </section>
+
         </section>
 
         <!-- secciones para elegir los ataques del jugador -->
         <section id="section-seleccionar-ataque">
             <h2>Seleccione un ataque</h2>
 
-            <!-- ataque cuerpo a cuerpo o con objetos -->
-            <button id="boton-atacar-fisico">fisico</button>
+            <div>
 
-            <!-- ataque mediante conjuros -->
-            <button id="boton-atacar-magico">magico</button>
+                <!-- ataque cuerpo a cuerpo o con objetos -->
+                <button id="boton-atacar-fisico">fisico</button>
 
-            <!-- ataque con apoyo de un NPC -->
-            <button id="boton-atacar-asistencia">asistencia</button>
+                <!-- ataque mediante conjuros -->
+                <button id="boton-atacar-magico">magico</button>
+
+                <!-- ataque con apoyo de un NPC -->
+                <button id="boton-atacar-asistencia">asistencia</button>
+
+            </div>
+
+            <div>
+                <!-- control de juego -->
+                <section id="section-control">
+                    <h2>THX por jugar</h2>
+                    <button id="boton-reiniciar-juego">Volver a jugar</button>
+                    <button id="boton-inicio">Cancelar</button>
+                </section>
+            </div>
+
+            <div>
+
+                <!-- feedback general de todos los eventos dentro del juego -->
+                <section id="section-mensajes-sistema">
+                    <h2>
+                        <code><span>MENSAJES DEL SISTEMA</span></code>
+                    </h2>
+                </section>
+
+            </div>
+
         </section>
 
-        <!-- feedback general de todos los eventos dentro del juego -->
-        <section id="section-mensajes-sistema">
-            <h2>
-                <code><span>MENSAJES DEL SISTEMA</span></code>
-            </h2>
-        </section>
-
-        <!-- control de juego -->
-        <section id="section-control">
-            <h2>THX por jugar</h2>
-            <button id="boton-reiniciar-juego">Volver a jugar</button>
-            <button id="boton-inicio">Cancelar</button>
-        </section>
     </main>
+
 </body>
 
 </html>
