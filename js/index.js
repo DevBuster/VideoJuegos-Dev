@@ -285,11 +285,11 @@ function crearMensajesSistema(mensaje) {
     * caso la etiqueta <p> dentro del sectionMensaje que es un <section> en el html 
     */
     let sectionMensaje = document.getElementById('section-mensajes-sistema');
-    let mensajesSistema = document.createElement('p');
+    // let mensajesSistema = document.createElement('p');
 
-    mensajesSistema.innerHTML = mensaje;
+    sectionMensaje.innerHTML = mensaje;
 
-    sectionMensaje.appendChild(mensajesSistema);
+    // sectionMensaje.appendChild(mensajesSistema);
 }
 
 // combate entre los jugadores
