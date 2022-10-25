@@ -1,15 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 
-body,
-button,
-span {
+body {
     font-family: 'Silkscreen', cursive;
     background-color: #98A8F8;
 }
 
+span {
+    font-family: 'Silkscreen', cursive;
+}
+
 button {
+    background-color: #98A8F8;
     font-family: 'Silkscreen', cursive;
     border-radius: 10px;
+    
+}
+
+input {
+    display: none;
+}
+
+input:checked+label {
+    background-color: #BCCEF8;
+}
+
+.tarjeta-jugador:hover{
+background-color: #BCCEF8;
+}
+button:hover{
+    background-color: #BCCEF8;
 }
 
 #section-seleccionar-jugador {
@@ -22,18 +41,18 @@ button {
     text-align: center;
 }
 
-/* .tarjetas-jugadores {
+.tarjetas-jugadores {
     display: flex;
 
-    /* agrega espaciados entre las tarjetas 
+    /* agrega espaciados entre las tarjetas  */
     gap: 10px;
-} */
+}
 
 #boton-seleccionar-jugador {
     border-radius: 10px;
 }
 
-.tarjetas{
+.tarjetas {
     display: flex;
     flex-direction: row;
 }
@@ -45,7 +64,7 @@ button {
     /*distribuye de manera equivalente los pixels para que cumpla los pixels tanto de anchura como altura*/
     box-sizing: border-box;
 
-    background-color: #BCCEF8;
+    background-color: #B1AFFF;
     text-align: center;
     border: 1px solid black;
     border-radius: 10px;
@@ -63,15 +82,10 @@ button {
 
 .boton-seleccionar-jugador {
     display: flex;
-    background-color: #CDFCF6;
     padding: 5px;
     margin: 10px;
-    border: 1px solid black;
-    box-sizing: border-box;
-}
-
-input {
-    display: none;
+    /* border: 1px solid black;
+    box-sizing: border-box; */
 }
 
 #section-dashboard {
