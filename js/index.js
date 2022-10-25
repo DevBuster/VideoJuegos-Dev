@@ -46,11 +46,6 @@ window.addEventListener('load', () => {
     botonReiniciarJuego.addEventListener('click', () => {
         location.reload();
     });
-
-    let botonInicio = document.getElementById('boton-inicio');
-    botonInicio.addEventListener('click', () => {
-        history.back();
-    });
 });
 
 // -------------------------- funciones para el jugador -------------------------- //
